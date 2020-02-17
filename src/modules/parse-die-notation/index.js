@@ -10,7 +10,7 @@ export default (diceString) => {
 
   if (Number.isNaN(Number(parts[1]))) {
     // die notation includes a modifier
-    const modifierMatch = /[+-]{1}[\d]{1}/;
+    const modifierMatch = /[+-]{1}[\d]/;
     const matchResult = parts[1].match(modifierMatch);
     mod = parseInt(matchResult[0], 10);
   }
