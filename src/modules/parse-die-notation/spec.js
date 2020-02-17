@@ -53,6 +53,17 @@ describe('parseDieNotation', () => {
     expect(actual).toEqual(expected);
   });
 
+  test('should account for long modifiers', () => {
+    const data = '12d6+125';
+    const actual = parseDieNotation(data);
+    const expected = {
+      count: 12,
+      sides: 6,
+      mod: 125,
+    };
+    expect(actual).toEqual(expected);
+  });
+
   test('should account for negative modifiers', () => {
     const data = '12d6-5';
     const actual = parseDieNotation(data);
