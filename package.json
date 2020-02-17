@@ -1,0 +1,25 @@
+{
+  "name": "dice-utils",
+  "version": "1.0.0",
+  "description": "A set of utilities to parse dice notation strings and roll dice.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aLittleTooQuiet/dice-utils.git"
+  },
+  "keywords": [
+    "Dice"
+  ],
+  "author": "Graham De Young",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aLittleTooQuiet/dice-utils/issues"
+  },
+  "homepage": "https://github.com/aLittleTooQuiet/dice-utils#readme",
+  "devDependencies": {
+    "jest": "^25.1.0"
+  }
+}
