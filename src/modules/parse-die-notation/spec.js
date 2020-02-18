@@ -28,6 +28,17 @@ describe('parseDieNotation', () => {
     };
     expect(actual).toEqual(expected);
   });
+  
+  test('should assume 1 die if not specified', () => {
+    const data = 'd6';
+    const actual = parseDieNotation(data);
+    const expected = {
+      count: 1,
+      sides: 6,
+      mod: 0,
+    };
+    expect(actual).toEqual(expected);
+  });
 
   test('should not be case sensitive', () => {
     const inputs = ['12d6', '12D6'];
@@ -77,6 +88,18 @@ describe('parseDieNotation', () => {
 
   test('should account for multipliers with "x"', () => {
     const data = '1d6x10';
+    const actual = parseDieNotation(data);
+    const expected = {
+      count: 1,
+      sides: 6,
+      mod: 10,
+      multiply: true,
+    };
+    expect(actual).toEqual(expected);
+  });
+
+  test('should account for multipliers with "X"', () => {
+    const data = '1d6X10';
     const actual = parseDieNotation(data);
     const expected = {
       count: 1,

@@ -11,7 +11,7 @@ export default (diceString) => {
   }
 
   const parts = diceString.toLowerCase().split('d');
-  const count = parseInt(parts[0], 10);
+  const count = parseInt(parts[0], 10) || 1;
   const sides = parseInt(parts[1], 10);
   let mod = 0;
   const result = {
