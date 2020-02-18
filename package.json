@@ -4,7 +4,8 @@
   "description": "A set of utilities to parse dice notation strings and roll dice.",
   "main": "index.js",
   "scripts": {
-    "test": "jest /"
+    "test": "jest /",
+    "coverage": "jest / --collect-coverage"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,14 @@
   "jest": {
     "transform": {
       "^.+\\.[t|j]sx?$": "babel-jest"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
     }
   }
 }
