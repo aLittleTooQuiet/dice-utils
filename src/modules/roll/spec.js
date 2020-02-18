@@ -40,6 +40,12 @@ describe('roll', () => {
     expect(actual).toBe(6);
   });
 
+  test('should account for a larger number of sides', () => {
+    const randFn = jest.fn(() => 1);
+    const actual = roll('1d20', randFn);
+    expect(actual).toBe(20);
+  });
+
   test('should account for positive modifiers', () => {
     const randFn = jest.fn(() => 1);
     let actual = roll('3d6', randFn);
