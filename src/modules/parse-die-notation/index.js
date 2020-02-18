@@ -1,5 +1,10 @@
 import isMultiplier from '../isMultiplier';
 
+/**
+ * Parse a die notation string.
+ * @param {int} diceString - A die notation string ie "1d20+5".
+ * @return {object} An object containing the parsed components of the die string.
+ */
 export default (diceString) => {
   if (typeof diceString !== 'string') {
     throw new Error('parseDieNotation must be called with a dice notation string');
