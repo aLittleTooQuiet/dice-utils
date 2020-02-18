@@ -33,4 +33,43 @@ describe('roll', () => {
       expect(actual).toBeLessThanOrEqual(count * sides);
     }
   });
+
+  test('should account for capital D', () => {
+    const randFn = jest.fn(() => 1);
+    const actual = roll('1D6', randFn);
+    expect(actual).toBe(6);
+  });
+
+  test('should account for positive modifiers', () => {
+    const randFn = jest.fn(() => 1);
+    let actual = roll('3d6', randFn);
+    expect(actual).toBe(18);
+
+    actual = roll('3d6+3', randFn);
+    expect(actual).toBe(21);
+  });
+
+  test('should account for negative modifiers', () => {
+    const randFn = jest.fn(() => 1);
+    let actual = roll('3d6', randFn);
+    expect(actual).toBe(18);
+
+    actual = roll('3d6-3', randFn);
+    expect(actual).toBe(15);
+  });
+
+  test('should account for multipliers', () => {
+    const randFn = jest.fn(() => 1);
+    let actual = roll('3d6', randFn);
+    expect(actual).toBe(18);
+
+    actual = roll('3d6x10', randFn);
+    expect(actual).toBe(180);
+
+    actual = roll('3d6X2', randFn);
+    expect(actual).toBe(36);
+
+    actual = roll('3d6*5', randFn);
+    expect(actual).toBe(90);
+  });
 });

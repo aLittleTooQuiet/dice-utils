@@ -74,4 +74,28 @@ describe('parseDieNotation', () => {
     };
     expect(actual).toEqual(expected);
   });
+
+  test('should account for multipliers with "x"', () => {
+    const data = '1d6x10';
+    const actual = parseDieNotation(data);
+    const expected = {
+      count: 1,
+      sides: 6,
+      mod: 10,
+      multiply: true,
+    };
+    expect(actual).toEqual(expected);
+  });
+
+  test('should account for multipliers with "*"', () => {
+    const data = '3d6*100';
+    const actual = parseDieNotation(data);
+    const expected = {
+      count: 3,
+      sides: 6,
+      mod: 100,
+      multiply: true,
+    };
+    expect(actual).toEqual(expected);
+  });
 });
