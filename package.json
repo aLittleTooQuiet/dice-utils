@@ -2,7 +2,8 @@
   "name": "dice-utils",
   "version": "1.0.0",
   "description": "A set of utilities to parse dice notation strings and roll dice.",
-  "main": "dist/index.js",
+  "main": "dist/dice-utils.umd.js",
+  "module": "dist/dice-utils.js",
   "scripts": {
     "test": "jest /",
     "coverage": "jest / --collect-coverage",
