@@ -2,10 +2,11 @@
   "name": "dice-utils",
   "version": "1.0.0",
   "description": "A set of utilities to parse dice notation strings and roll dice.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "jest /",
-    "coverage": "jest / --collect-coverage"
+    "coverage": "jest / --collect-coverage",
+    "build": "rollup --config"
   },
   "repository": {
     "type": "git",
@@ -21,15 +22,18 @@
   },
   "homepage": "https://github.com/aLittleTooQuiet/dice-utils#readme",
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
     "babel-jest": "^25.1.0",
+    "cross-env": "^7.0.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jest": "^23.7.0",
     "jest": "^25.1.0",
-    "jest-cli": "^25.1.0"
+    "jest-cli": "^25.1.0",
+    "rollup": "^1.31.1"
   },
   "babel": {
     "presets": [

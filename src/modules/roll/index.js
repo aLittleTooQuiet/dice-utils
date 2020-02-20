@@ -1,5 +1,5 @@
-import parseDieNotation from '../parse-die-notation';
-import rollDie from '../roll-die';
+import parseDieNotation from '../parse-die-notation/index';
+import rollDie from '../roll-die/index';
 
 /**
  * Parse a die notation string, roll the individual dice, and return the total

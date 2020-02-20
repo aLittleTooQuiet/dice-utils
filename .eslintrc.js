@@ -3,5 +3,6 @@ module.exports = {
   "plugins": ["jest"],
   "env": {
     "jest/globals": true
-  }
+  },
+  "ignorePatterns": ["dist/", "node_modules/", "coverage/"],
 };
