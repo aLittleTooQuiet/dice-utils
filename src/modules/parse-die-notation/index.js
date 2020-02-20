@@ -1,4 +1,4 @@
-import isMultiplier from '../isMultiplier/index';
+﻿import isMultiplier from '../isMultiplier/index';
 
 /**
  * Parse a die notation string.
