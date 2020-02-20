@@ -11,71 +11,64 @@ describe('roll', () => {
     expect(() => { roll(); }).toThrow();
   });
 
-  test('should return an integer', () => {
-    const actual = roll('1d6');
-    expect(Number.isInteger(actual)).toBe(true);
-  });
-
   test('should call randFn x times', () => {
     const randFn = jest.fn(() => Math.random());
     roll('6d6', randFn);
     expect(randFn).toHaveBeenCalledTimes(6);
   });
 
-  test('should return an integer', () => {
-    const count = 12;
-    const sides = 6;
-    // this function retuns random values, so test a few of them
-    for (let i = 0; i < 10; i += 1) {
-      const actual = roll(`${count}d${sides}`);
-      expect(Number.isInteger(actual)).toBe(true);
-      expect(actual).toBeGreaterThanOrEqual(count);
-      expect(actual).toBeLessThanOrEqual(count * sides);
-    }
+  test('should return an array of results', () => {
+    const randFn = jest.fn(() => 1);
+    const actual = roll('3d6', randFn);
+    const expected = {
+      results: [6, 6, 6],
+      total: 18,
+    };
+    expect(actual).toEqual(expected);
   });
 
   test('should account for capital D', () => {
     const randFn = jest.fn(() => 1);
-    const actual = roll('1D6', randFn);
+    const actual = roll('1D6', randFn).total;
     expect(actual).toBe(6);
   });
 
   test('should account for a larger number of sides', () => {
     const randFn = jest.fn(() => 1);
-    const actual = roll('1d20', randFn);
+    const actual = roll('1d20', randFn).total;
     expect(actual).toBe(20);
   });
 
   test('should account for positive modifiers', () => {
     const randFn = jest.fn(() => 1);
-    let actual = roll('3d6', randFn);
+    let actual = roll('3d6', randFn).total;
     expect(actual).toBe(18);
 
-    actual = roll('3d6+3', randFn);
+    actual = roll('3d6+3', randFn).total;
     expect(actual).toBe(21);
   });
 
   test('should account for negative modifiers', () => {
     const randFn = jest.fn(() => 1);
-    let actual = roll('3d6', randFn);
+    let actual = roll('3d6', randFn).total;
     expect(actual).toBe(18);
 
-    actual = roll('3d6-3', randFn);
+    actual = roll('3d6-3', randFn).total;
     expect(actual).toBe(15);
   });
 
   test('should account for multipliers', () => {
     const randFn = jest.fn(() => 1);
-    let actual = roll('3d6', randFn);
+    let actual = roll('3d6', randFn).total;
     expect(actual).toBe(18);
 
-    actual = roll('3d6x10', randFn);
+    actual = roll('3d6x10', randFn).total;
     expect(actual).toBe(180);
 
-    actual = roll('3d6X2', randFn);
+    actual = roll('3d6X2', randFn).total;
     expect(actual).toBe(36);
 
-    actual = roll('3d6*5', randFn);
+    actual = roll('3d6*5', randFn).total;
     expect(actual).toBe(90);
   });
 });
