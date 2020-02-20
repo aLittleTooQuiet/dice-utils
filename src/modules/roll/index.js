@@ -6,7 +6,8 @@ import rollDie from '../roll-die/index';
  * accounting for any modifiers.
  * @param {int} diceString - A die notation string ie "1d20+5".
  * @param {function} randFn - A function that returns a pseudorandom float between 0 and 1.
- * @return {object} An object containing the results of the invididual die rolls and the total of the modified sum.
+ * @return {object} An object containing the results of the invididual die rolls and the
+ * total of the modified sum.
  */
 export default (diceString, randFn = Math.random) => {
   const {
