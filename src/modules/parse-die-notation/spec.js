@@ -28,7 +28,7 @@ describe('parseDieNotation', () => {
     };
     expect(actual).toEqual(expected);
   });
-  
+
   test('should assume 1 die if not specified', () => {
     const data = 'd6';
     const actual = parseDieNotation(data);
@@ -118,6 +118,17 @@ describe('parseDieNotation', () => {
       sides: 6,
       mod: 100,
       multiply: true,
+    };
+    expect(actual).toEqual(expected);
+  });
+
+  test('should account for Fudge dice', () => {
+    const data = '4dF';
+    const actual = parseDieNotation(data);
+    const expected = {
+      count: 4,
+      sides: 'F',
+      mod: 0,
     };
     expect(actual).toEqual(expected);
   });

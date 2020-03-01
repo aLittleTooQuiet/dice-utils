@@ -64,11 +64,21 @@ The results can also be multiplied by appending an integer using `x` or `*`.
 
 `"2d6x10"` or `"2d6*10"` represents 2 6-sided dice, with the sum of the results multiplied by 10.
 
-### rollDie
+#### Fudge Dice
+You can roll Fudge dice by specifying "F" for the number of sides.
 
-Requires an integer parameter `sides`, and returns an integer between 1 and `sides`.
+Fudge dice have an equal probability to return -1, 0, or 1.
+
+`"4dF"` represents 4 Fudge dice.
+
+### `rollDie`
+
+Requires a parameter `sides`, which is either an integer or "F", and returns an integer between 1 and `sides`, or rolls Fudge dice for "F".
 
 ```javascript
 roll(6);
 // 5
+
+roll('F');
+// -1
 ```

@@ -30,4 +30,21 @@ describe('rollDie', () => {
       expect(actual).toBeLessThanOrEqual(sides);
     }
   });
+
+  test('should roll fudge dice', () => {
+    let randFn = jest.fn(() => 1);
+    let actual = rollDie('F', randFn);
+    let expected = 1;
+    expect(actual).toBe(expected);
+
+    randFn = jest.fn(() => 0);
+    actual = rollDie('F', randFn);
+    expected = -1;
+    expect(actual).toBe(expected);
+
+    randFn = jest.fn(() => 0.5);
+    actual = rollDie('F', randFn);
+    expected = 0;
+    expect(actual).toBe(expected);
+  });
 });
