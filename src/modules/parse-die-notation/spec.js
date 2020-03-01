@@ -1,4 +1,5 @@
-﻿import parseDieNotation from './index';
+﻿/* eslint-disable linebreak-style */
+import parseDieNotation from './index';
 
 describe('parseDieNotation', () => {
   test('should be a function', () => {
@@ -28,7 +29,7 @@ describe('parseDieNotation', () => {
     };
     expect(actual).toEqual(expected);
   });
-  
+
   test('should assume 1 die if not specified', () => {
     const data = 'd6';
     const actual = parseDieNotation(data);
@@ -118,6 +119,18 @@ describe('parseDieNotation', () => {
       sides: 6,
       mod: 100,
       multiply: true,
+    };
+    expect(actual).toEqual(expected);
+  });
+
+  test('should account for Fudge dice', () => {
+    const data = '4dF';
+    const actual = parseDieNotation(data);
+    const expected = {
+      count: 4,
+      sides: 6,
+      mod: 0,
+      fudge: true,
     };
     expect(actual).toEqual(expected);
   });

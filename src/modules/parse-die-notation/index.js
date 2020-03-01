@@ -1,4 +1,6 @@
-﻿import isMultiplier from '../isMultiplier/index';
+﻿/* eslint-disable linebreak-style */
+import isMultiplier from '../isMultiplier/index';
+import isFudge from '../isFudge/index';
 
 /**
  * Parse a die notation string.
@@ -12,22 +14,28 @@ export default (diceString) => {
 
   const parts = diceString.toLowerCase().split('d');
   const count = parseInt(parts[0], 10) || 1;
-  const sides = parseInt(parts[1], 10);
+  const sides = isFudge(parts[1]) ? 6 : parseInt(parts[1], 10);
   let mod = 0;
   const result = {
     count,
     sides,
   };
 
+  if (isFudge(parts[1])) {
+    result.fudge = true;
+  }
+
   if (Number.isNaN(Number(parts[1]))) {
     // die notation includes a modifier
     const modifierMatch = /[+-xX*]{1}[\d]{1,}/;
     const matchResult = parts[1].match(modifierMatch);
-    if (isMultiplier(matchResult[0])) {
-      result.multiply = true;
-      mod = parseInt(matchResult[0].substring(1), 10);
-    } else {
-      mod = parseInt(matchResult[0], 10);
+    if (matchResult) {
+      if (isMultiplier(matchResult[0])) {
+        result.multiply = true;
+        mod = parseInt(matchResult[0].substring(1), 10);
+      } else {
+        mod = parseInt(matchResult[0], 10);
+      }
     }
   }
   result.mod = mod;
