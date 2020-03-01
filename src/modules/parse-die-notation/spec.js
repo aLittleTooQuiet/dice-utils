@@ -1,5 +1,4 @@
-﻿/* eslint-disable linebreak-style */
-import parseDieNotation from './index';
+﻿import parseDieNotation from './index';
 
 describe('parseDieNotation', () => {
   test('should be a function', () => {
@@ -128,9 +127,8 @@ describe('parseDieNotation', () => {
     const actual = parseDieNotation(data);
     const expected = {
       count: 4,
-      sides: 6,
+      sides: 'F',
       mod: 0,
-      fudge: true,
     };
     expect(actual).toEqual(expected);
   });
