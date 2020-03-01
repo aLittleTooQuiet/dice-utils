@@ -38,8 +38,6 @@ describe('rollDie', () => {
     expect(actual).toBe(expected);
   });
 
-  // return Math.ceil(randFn() * (sides - 1) + 1);
-
   test('should roll fudge dice', () => {
     let randFn = jest.fn(() => 1);
     let actual = rollDie('F', randFn);
