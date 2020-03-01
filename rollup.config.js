@@ -8,7 +8,7 @@ export default {
     },
     {
       file: 'dist/dice-utils.js',
-      format: 'module',
+      format: 'esm',
     },
   ],
 };
