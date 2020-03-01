@@ -71,4 +71,19 @@ describe('roll', () => {
     actual = roll('3d6*5', randFn).total;
     expect(actual).toBe(90);
   });
+
+  test('should account for dropping the lowest die', () => {
+    let count = -1;
+    const results = [0, 1, 1, 1];
+    const randFn = jest.fn(() => {
+      count += 1;
+      return results[count];
+    });
+    const actual = roll('4d6-L', randFn);
+    const expected = {
+      results: [1, 6, 6, 6],
+      total: 18,
+    };
+    expect(actual).toBe(expected);
+  });
 });

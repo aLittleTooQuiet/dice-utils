@@ -132,4 +132,16 @@ describe('parseDieNotation', () => {
     };
     expect(actual).toEqual(expected);
   });
+
+  test('should account for dropping the lowest die', () => {
+    const data = '4d6-L';
+    const actual = parseDieNotation(data);
+    const expected = {
+      count: 4,
+      sides: 6,
+      mod: 0,
+      dropLow: true,
+    };
+    expect(actual).toEqual(expected);
+  });
 });
