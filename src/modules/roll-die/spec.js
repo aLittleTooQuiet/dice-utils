@@ -31,6 +31,13 @@ describe('rollDie', () => {
     }
   });
 
+  test('should return a minimum of 1', () => {
+    const randFn = jest.fn(() => 0);
+    const actual = rollDie(6, randFn);
+    const expected = 1;
+    expect(actual).toBe(expected);
+  });
+
   test('should roll fudge dice', () => {
     let randFn = jest.fn(() => 1);
     let actual = rollDie('F', randFn);

@@ -15,5 +15,5 @@ export default (sides, randFn = Math.random) => {
     return Math.ceil(randFn() * 2) - 1;
   }
 
-  return Math.ceil(randFn() * sides);
+  return Math.ceil(randFn() * (sides - 1) + 1);
 };

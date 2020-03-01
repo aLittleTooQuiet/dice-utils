@@ -51,11 +51,13 @@ Requires a dice notation string as a parameter, and returns an object with the f
 * `multiply`: (optional) Boolean, `true` if the total is to multiplied by mod.
 
 #### Basic Die Notation
+
 This function supports any number of dice of arbitrary sizes, using the convention `"XdY"` where X is the number of dice to roll and Y is the number of sizes.
 
 `"5d10"` represents 5 10-sided dice.
 
 #### Modifiers
+
 A positive or negative integer can be appended, which will be applied to the total.
 
 `"3d6-2"` represents 3 6-sided dice, with 2 subtracted from the sum of the results.
@@ -65,6 +67,7 @@ The results can also be multiplied by appending an integer using `x` or `*`.
 `"2d6x10"` or `"2d6*10"` represents 2 6-sided dice, with the sum of the results multiplied by 10.
 
 #### Fudge Dice
+
 You can roll Fudge dice by specifying "F" for the number of sides.
 
 Fudge dice have an equal probability to return -1, 0, or 1.
