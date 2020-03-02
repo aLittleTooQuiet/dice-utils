@@ -1,7 +1,10 @@
 import parseDieNotation from '../parse-die-notation/index';
 import rollDie from '../roll-die/index';
 
-const getTotal = (results, { mod, multiply, dropLow }) => {
+const getTotal = (results, options) => {
+  const {
+    mod, multiply, dropLow, success,
+  } = options;
   let resultCopy = [...results];
   let total = 0;
 
@@ -9,14 +12,22 @@ const getTotal = (results, { mod, multiply, dropLow }) => {
     (resultCopy = resultCopy.sort((a, b) => a - b)).shift();
   }
 
-  resultCopy.forEach((v) => {
-    total += v;
-  });
+  if (success) {
+    resultCopy.forEach((v) => {
+      if ((success < 0 && v <= mod) || (success > 0 && v >= mod)) {
+        total += 1;
+      }
+    });
+  } else {
+    resultCopy.forEach((v) => {
+      total += v;
+    });
 
-  if (multiply) {
-    total *= mod;
-  } else if (mod) {
-    total += mod;
+    if (multiply) {
+      total *= mod;
+    } else if (mod) {
+      total += mod;
+    }
   }
 
   return total;
@@ -32,7 +43,7 @@ const getTotal = (results, { mod, multiply, dropLow }) => {
  */
 export default (diceString, randFn = Math.random) => {
   const {
-    count, sides, mod, multiply, dropLow,
+    count, sides, mod, multiply, dropLow, success,
   } = parseDieNotation(diceString);
   const results = [];
 
@@ -43,6 +54,8 @@ export default (diceString, randFn = Math.random) => {
 
   return {
     results,
-    total: getTotal(results, { mod, multiply, dropLow }),
+    total: getTotal(results, {
+      mod, multiply, dropLow, success,
+    }),
   };
 };

@@ -144,4 +144,28 @@ describe('parseDieNotation', () => {
     };
     expect(actual).toEqual(expected);
   });
+
+  test('should account for counting successes > X', () => {
+    const data = '4d6>5';
+    const actual = parseDieNotation(data);
+    const expected = {
+      count: 4,
+      sides: 6,
+      mod: 5,
+      success: 1,
+    };
+    expect(actual).toEqual(expected);
+  });
+
+  test('should account for counting successes < X', () => {
+    const data = '4d6<3';
+    const actual = parseDieNotation(data);
+    const expected = {
+      count: 4,
+      sides: 6,
+      mod: 3,
+      success: -1,
+    };
+    expect(actual).toEqual(expected);
+  });
 });

@@ -86,4 +86,34 @@ describe('roll', () => {
     };
     expect(actual).toEqual(expected);
   });
+
+  test('should account for successes > X', () => {
+    let count = -1;
+    const results = [0, 1, 0.7, 0.6];
+    const randFn = jest.fn(() => {
+      count += 1;
+      return results[count];
+    });
+    const actual = roll('4d6>5', randFn);
+    const expected = {
+      results: [1, 6, 5, 4],
+      total: 2,
+    };
+    expect(actual).toEqual(expected);
+  });
+
+  test('should account for successes < X', () => {
+    let count = -1;
+    const results = [0, 1, 0.7, 0.6];
+    const randFn = jest.fn(() => {
+      count += 1;
+      return results[count];
+    });
+    const actual = roll('4d6<3', randFn);
+    const expected = {
+      results: [1, 6, 5, 4],
+      total: 1,
+    };
+    expect(actual).toEqual(expected);
+  });
 });
