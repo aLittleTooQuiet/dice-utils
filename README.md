@@ -76,7 +76,7 @@ You can drop the lowest die result with a `"-L"` modifier.
 
 `"4d6-L"` represents rolling 4 6-sided dice and dropping the lowest die value, totaling the higher 3.
 
-#### Fudge Dice
+##### Fudge Dice
 
 You can roll Fudge dice by specifying "F" for the number of sides.
 
