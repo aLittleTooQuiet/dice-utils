@@ -2,6 +2,8 @@
 
 A library for parsing dice notation strings and rolling dice.
 
+If you're unfamilar with dice notation, you can [learn more about it here](https://en.wikipedia.org/wiki/Dice_notation).
+
 ## API
 
 `dice-utils` exports an object with three functions:
@@ -49,6 +51,8 @@ Requires a dice notation string as a parameter, and returns an object with the f
 * `count`: Integer, The number of dice to roll.
 * `mod`: Integer, A postive or negative value that modifies the total result. Default `0`.
 * `multiply`: (optional) Boolean, `true` if the total is to multiplied by mod.
+* `dropLow`: (optional) Boolean, `true` if the lowest die value should be dropped before calculating the total.
+* `succes`: (optional) Integer, `-1` if counting low successes, `1` if counting high successes.
 
 #### Basic Die Notation
 
@@ -76,7 +80,17 @@ You can drop the lowest die result with a `"-L"` modifier.
 
 `"4d6-L"` represents rolling 4 6-sided dice and dropping the lowest die value, totaling the higher 3.
 
-##### Fudge Dice
+##### Count individual successes
+
+You can count individual successes on the die against a high target number using the syntax `">X"`, where X is the target number. This will count all dice that are greater than or equal to the target number.
+
+`"10d6>5"` represents 10 6-sided dice, with the total equal to the number of dice that are 5 or greater.
+
+You can count against a low target number using the syntax `"<X"`.
+
+`"2d20<10"` represents 2 20-sided dice, with the total equal to the number of dice that are 10 or lower.
+
+#### Fudge Dice
 
 You can roll Fudge dice by specifying "F" for the number of sides.
 
