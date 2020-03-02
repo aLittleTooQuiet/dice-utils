@@ -84,6 +84,6 @@ describe('roll', () => {
       results: [1, 6, 6, 6],
       total: 18,
     };
-    expect(actual).toBe(expected);
+    expect(actual).toEqual(expected);
   });
 });
