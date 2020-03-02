@@ -1,6 +1,27 @@
 import parseDieNotation from '../parse-die-notation/index';
 import rollDie from '../roll-die/index';
 
+const getTotal = (results, { mod, multiply, dropLow }) => {
+  let resultCopy = [...results];
+  let total = 0;
+
+  if (dropLow) {
+    (resultCopy = resultCopy.sort((a, b) => a - b)).shift();
+  }
+
+  resultCopy.forEach((v) => {
+    total += v;
+  });
+
+  if (multiply) {
+    total *= mod;
+  } else if (mod) {
+    total += mod;
+  }
+
+  return total;
+};
+
 /**
  * Parse a die notation string, roll the individual dice, and return the total
  * accounting for any modifiers.
@@ -11,26 +32,17 @@ import rollDie from '../roll-die/index';
  */
 export default (diceString, randFn = Math.random) => {
   const {
-    count, sides, mod, multiply,
+    count, sides, mod, multiply, dropLow,
   } = parseDieNotation(diceString);
   const results = [];
-  let total = 0;
 
   for (let i = 0; i < count; i += 1) {
     const currentResult = rollDie(sides, randFn);
     results.push(currentResult);
-    total += currentResult;
-  }
-
-  if (multiply) {
-    return {
-      results,
-      total: total * mod,
-    };
   }
 
   return {
     results,
-    total: total + mod,
+    total: getTotal(results, { mod, multiply, dropLow }),
   };
 };

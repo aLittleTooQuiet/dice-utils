@@ -58,15 +58,25 @@ This function supports any number of dice of arbitrary sizes, using the conventi
 
 #### Modifiers
 
+##### Add or subtract from the total
+
 A positive or negative integer can be appended, which will be applied to the total.
 
 `"3d6-2"` represents 3 6-sided dice, with 2 subtracted from the sum of the results.
+
+##### Multiply the total
 
 The results can also be multiplied by appending an integer using `x` or `*`.
 
 `"2d6x10"` or `"2d6*10"` represents 2 6-sided dice, with the sum of the results multiplied by 10.
 
-#### Fudge Dice
+##### Drop the lowest die
+
+You can drop the lowest die result with a `"-L"` modifier.
+
+`"4d6-L"` represents rolling 4 6-sided dice and dropping the lowest die value, totaling the higher 3.
+
+##### Fudge Dice
 
 You can roll Fudge dice by specifying "F" for the number of sides.
 
