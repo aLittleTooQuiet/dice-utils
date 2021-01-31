@@ -20,15 +20,28 @@ describe('rollDie', () => {
     expect(randFn).toHaveBeenCalledTimes(1);
   });
 
-  test('should return an integer between 1 and `sides`', () => {
-    const sides = 6;
+  test('should return a random distribution of results between 1 and sides', () => {
     // this function retuns random values, so test a few of them
-    for (let i = 0; i < 10; i += 1) {
-      const actual = rollDie(sides);
-      expect(Number.isInteger(actual)).toBe(true);
-      expect(actual).toBeGreaterThanOrEqual(1);
-      expect(actual).toBeLessThanOrEqual(sides);
+    const sides = 6;
+    const iterations = 10000;
+    const actual = {
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+      5: 0,
+      6: 0,
+    };
+    for (let i = 0; i < iterations; i += 1) {
+      const result = rollDie(sides);
+      actual[result] += 1;
     }
+    const target = Math.round(iterations / sides);
+    const range = 100;
+    Object.keys(actual).forEach((r) => {
+      expect(actual[r]).toBeGreaterThan(target - range);
+      expect(actual[r]).toBeLessThan(target + range);
+    });
   });
 
   test('should return a minimum of 1', () => {
