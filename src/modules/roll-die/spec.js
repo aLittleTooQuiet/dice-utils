@@ -32,9 +32,13 @@ describe('rollDie', () => {
   });
 
   test('should return a minimum of 1', () => {
-    const randFn = jest.fn(() => 0);
-    const actual = rollDie(6, randFn);
+    let randFn = jest.fn(() => 0);
+    let actual = rollDie(6, randFn);
     const expected = 1;
+    expect(actual).toBe(expected);
+
+    randFn = jest.fn(() => 0.1);
+    actual = rollDie(6, randFn);
     expect(actual).toBe(expected);
   });
 
@@ -45,6 +49,11 @@ describe('rollDie', () => {
     expect(actual).toBe(expected);
 
     randFn = jest.fn(() => 0);
+    actual = rollDie('F', randFn);
+    expected = -1;
+    expect(actual).toBe(expected);
+
+    randFn = jest.fn(() => 0.1);
     actual = rollDie('F', randFn);
     expected = -1;
     expect(actual).toBe(expected);
