@@ -12,8 +12,8 @@ export default (sides, randFn = Math.random) => {
   }
 
   if (isFudge(sides)) {
-    return Math.ceil(randFn() * 2) - 1;
+    return Math.floor(randFn() * 2.999) - 1;
   }
 
-  return Math.ceil(randFn() * (sides - 1) + 1);
+  return Math.floor(randFn() * (sides - 0.001)) + 1;
 };
