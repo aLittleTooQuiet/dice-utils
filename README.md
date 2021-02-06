@@ -22,7 +22,8 @@ Requires a dice notation string as a parameter, and returns an object with `resu
 Uses [`parseDieNotation`](#parseDieNotation) internally.
 
 ```javascript
-import { roll } from 'dice-utils';
+import diceUtils from 'dice-utils';
+const { roll } = diceUtils;
 
 roll('2d6');
 // {
