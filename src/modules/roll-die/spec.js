@@ -44,7 +44,6 @@ describe('rollDie', () => {
   });
 
   test('should return a random distribution of results between -1 and 1, for a Fudge die', () => {
-    // this function retuns random values, so test a few of them
     const sides = 'F';
     const iterations = 10000;
     const actual = {
@@ -56,7 +55,7 @@ describe('rollDie', () => {
       const result = rollDie(sides);
       actual[result] += 1;
     }
-    const target = Math.round(iterations / sides);
+    const target = Math.round(iterations / 3);
     const range = 100;
     Object.keys(actual).forEach((r) => {
       expect(actual[r]).toBeGreaterThan(target - range);
