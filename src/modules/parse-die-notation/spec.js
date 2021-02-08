@@ -168,4 +168,23 @@ describe('parseDieNotation', () => {
     };
     expect(actual).toEqual(expected);
   });
+
+  test('should parse multiple types of dice', () => {
+    const data = '12d6 + 1d20';
+    const actual = parseDieNotation(data);
+    // TODO think a bit about this formatting
+    const expected = [
+      {
+        count: 12,
+        sides: 6,
+        mod: 0,
+      },
+      {
+        count: 1,
+        sides: 20,
+        mod: 0,
+      },
+    ];
+    expect(actual).toEqual(expected);
+  });
 });
