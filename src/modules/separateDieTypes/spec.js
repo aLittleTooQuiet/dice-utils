@@ -1,4 +1,3 @@
-import { TestScheduler } from 'jest';
 import separateDieTypes from './index';
 
 describe('separateDieTypes', () => {

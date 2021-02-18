@@ -9,7 +9,6 @@ export default (diceString) => {
     };
   }
   const match = diceString.replace(/\s/g, '').toLowerCase().match(dieRegex);
-  console.log(match);
   const result = match.map((dieString) => dieString);
   return result;
 };
