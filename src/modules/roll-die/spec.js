@@ -36,7 +36,7 @@ describe('rollDie', () => {
       actual[result] += 1;
     }
     const target = Math.round(iterations / sides);
-    const range = 100;
+    const range = 150;
     Object.keys(actual).forEach((r) => {
       expect(actual[r]).toBeGreaterThan(target - range);
       expect(actual[r]).toBeLessThan(target + range);
@@ -56,7 +56,7 @@ describe('rollDie', () => {
       actual[result] += 1;
     }
     const target = Math.round(iterations / 3);
-    const range = 100;
+    const range = 150;
     Object.keys(actual).forEach((r) => {
       expect(actual[r]).toBeGreaterThan(target - range);
       expect(actual[r]).toBeLessThan(target + range);

@@ -33,18 +33,10 @@ const getTotal = (results, options) => {
   return total;
 };
 
-/**
- * Parse a die notation string, roll the individual dice, and return the total
- * accounting for any modifiers.
- * @param {int} diceString - A die notation string ie "1d20+5".
- * @param {function} randFn - A function that returns a pseudorandom float between 0 and 1.
- * @return {object} An object containing the results of the invididual die rolls and the
- * total of the modified sum.
- */
-export default (diceString, randFn = Math.random) => {
+const rollDieGroup = (diceGroup, randFn = Math.random) => {
   const {
     count, sides, mod, multiply, dropLow, success,
-  } = parseDieNotation(diceString);
+  } = diceGroup;
   const results = [];
 
   for (let i = 0; i < count; i += 1) {
@@ -58,4 +50,29 @@ export default (diceString, randFn = Math.random) => {
       mod, multiply, dropLow, success,
     }),
   };
+};
+
+/**
+ * Parse a die notation string, roll the individual dice, and return the total
+ * accounting for any modifiers.
+ * @param {int} diceString - A die notation string ie "1d20+5".
+ * @param {function} randFn - A function that returns a pseudorandom float between 0 and 1.
+ * @return {object} An object containing the results of the invididual die rolls and the
+ * total of the modified sum.
+ */
+export default (diceString, randFn = Math.random) => {
+  const parsed = parseDieNotation(diceString);
+  if (Array.isArray(parsed)) {
+    const result = parsed.reduce((acc, cur) => {
+      const curResult = rollDieGroup(cur, randFn);
+      acc.results.push(curResult);
+      acc.total += curResult.total;
+      return acc;
+    }, {
+      results: [],
+      total: 0,
+    });
+    return result;
+  }
+  return rollDieGroup(parsed, randFn);
 };

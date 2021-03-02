@@ -116,4 +116,24 @@ describe('roll', () => {
     };
     expect(actual).toEqual(expected);
   });
+
+  test('should add multiple die groups together', () => {
+    const diceString = '10d6 + 4d8';
+    const randFn = jest.fn(() => 1);
+    const actual = roll(diceString, randFn);
+    const expected = {
+      results: [
+        {
+          results: [6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
+          total: 60,
+        },
+        {
+          results: [8, 8, 8, 8],
+          total: 32,
+        },
+      ],
+      total: 92,
+    };
+    expect(actual).toEqual(expected);
+  });
 });

@@ -168,4 +168,22 @@ describe('parseDieNotation', () => {
     };
     expect(actual).toEqual(expected);
   });
+
+  test('should account for multiple die types', () => {
+    const diceString = '10d6 + 4d8';
+    const actual = parseDieNotation(diceString);
+    const expected = [
+      {
+        sides: 6,
+        count: 10,
+        mod: 0,
+      },
+      {
+        sides: 8,
+        count: 4,
+        mod: 0,
+      },
+    ];
+    expect(actual).toEqual(expected);
+  });
 });
