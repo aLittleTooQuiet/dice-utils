@@ -104,9 +104,9 @@ Fudge dice have an equal probability to return -1, 0, or 1.
 Requires a parameter `sides`, which is either an integer or "F", and returns an integer between 1 and `sides`, or rolls Fudge dice for "F".
 
 ```javascript
-roll(6);
+rollDie(6);
 // 5
 
-roll('F');
+rollDie('F');
 // -1
 ```
