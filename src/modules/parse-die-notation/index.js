@@ -24,7 +24,7 @@ export default (diceString) => {
 
   if (Number.isNaN(Number(parts[1]))) {
     // die notation includes a modifier
-    const modifierMatch = /[+-xX*<>]{1}[\dlL]{1,}/;
+    const modifierMatch = /[+\-xX*<>]{1}[\dlL]{1,}/;
     const matchResult = parts[1].match(modifierMatch);
     if (matchResult) {
       if (isMultiplier(matchResult[0])) {
