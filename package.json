@@ -1,6 +1,6 @@
 {
   "name": "dice-utils",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "A set of utilities to parse dice notation strings and roll dice.",
   "main": "dist/dice-utils.umd.js",
   "module": "dist/dice-utils.js",
