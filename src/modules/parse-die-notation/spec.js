@@ -64,6 +64,17 @@ describe('parseDieNotation', () => {
     expect(actual).toEqual(expected);
   });
 
+  test('should account for positive modifiers when sides > 9', () => {
+    const data = '12d20+5';
+    const actual = parseDieNotation(data);
+    const expected = {
+      count: 12,
+      sides: 20,
+      mod: 5,
+    };
+    expect(actual).toEqual(expected);
+  });
+
   test('should account for long modifiers', () => {
     const data = '12d6+125';
     const actual = parseDieNotation(data);
@@ -81,6 +92,17 @@ describe('parseDieNotation', () => {
     const expected = {
       count: 12,
       sides: 6,
+      mod: -5,
+    };
+    expect(actual).toEqual(expected);
+  });
+
+  test('should account for negative modifiers when sides > 9', () => {
+    const data = '12d20-5';
+    const actual = parseDieNotation(data);
+    const expected = {
+      count: 12,
+      sides: 20,
       mod: -5,
     };
     expect(actual).toEqual(expected);
@@ -139,6 +161,18 @@ describe('parseDieNotation', () => {
     const expected = {
       count: 4,
       sides: 6,
+      mod: 0,
+      dropLow: true,
+    };
+    expect(actual).toEqual(expected);
+  });
+
+  test('should account for dropping the lowest die when sides > 9', () => {
+    const data = '2d20-L';
+    const actual = parseDieNotation(data);
+    const expected = {
+      count: 2,
+      sides: 20,
       mod: 0,
       dropLow: true,
     };
