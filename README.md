@@ -52,7 +52,7 @@ Requires a dice notation string as a parameter, and returns an object with the f
 * `mod`: Integer, A postive or negative value that modifies the total result. Default `0`.
 * `multiply`: (optional) Boolean, `true` if the total is to multiplied by mod.
 * `dropLow`: (optional) Boolean, `true` if the lowest die value should be dropped before calculating the total.
-* `succes`: (optional) Integer, `-1` if counting low successes, `1` if counting high successes.
+* `success`: (optional) Integer, `-1` if counting low successes, `1` if counting high successes.
 
 #### Basic Die Notation
 
