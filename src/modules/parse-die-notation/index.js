@@ -1,4 +1,4 @@
-﻿import isMultiplier from '../isMultiplier/index';
+import isMultiplier from '../isMultiplier/index';
 import isFudge from '../isFudge/index';
 import isDropLowest from '../isDropLowest/index';
 import isSuccessCount from '../isSuccessCount/index';

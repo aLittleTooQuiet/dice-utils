@@ -1,4 +1,4 @@
-module.exports = {
+{
   "extends": "airbnb-base",
   "plugins": ["jest"],
   "env": {
@@ -8,4 +8,4 @@ module.exports = {
   "rules": {
     "linebreak-style": "off"
   }
-};
+}
