@@ -1,4 +1,4 @@
-import isFudge from './index';
+import isFudge from './index.ts';
 
 describe('isFudge', () => {
   test('should be a function', () => {

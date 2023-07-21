@@ -1,4 +1,4 @@
-import isSuccessCount from './index';
+import isSuccessCount from './index.ts';
 
 describe('isSuccessCount', () => {
   test('should be a function', () => {

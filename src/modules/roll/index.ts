@@ -1,7 +1,19 @@
-import parseDieNotation from '../parse-die-notation/index';
-import rollDie from '../roll-die/index';
+import parseDieNotation from '../parse-die-notation/index.ts';
+import rollDie from '../roll-die/index.ts';
 
-const getTotal = (results, options) => {
+interface DiceOptions {
+  mod: number,
+  multiply: boolean,
+  dropLow: boolean,
+  success: number,
+}
+
+interface RollResult {
+  results: number[],
+  total: number,
+}
+
+const getTotal = (results: number[], options: DiceOptions): number => {
   const {
     mod, multiply, dropLow, success,
   } = options;
@@ -36,12 +48,12 @@ const getTotal = (results, options) => {
 /**
  * Parse a die notation string, roll the individual dice, and return the total
  * accounting for any modifiers.
- * @param {int} diceString - A die notation string ie "1d20+5".
+ * @param {string} diceString - A die notation string ie "1d20+5".
  * @param {function} randFn - A function that returns a pseudorandom float between 0 and 1.
  * @return {object} An object containing the results of the invididual die rolls and the
  * total of the modified sum.
  */
-export default (diceString, randFn = Math.random) => {
+export default function Roll(diceString: string, randFn: () => number = Math.random): RollResult {
   const {
     count, sides, mod, multiply, dropLow, success,
   } = parseDieNotation(diceString);
@@ -58,4 +70,4 @@ export default (diceString, randFn = Math.random) => {
       mod, multiply, dropLow, success,
     }),
   };
-};
+}

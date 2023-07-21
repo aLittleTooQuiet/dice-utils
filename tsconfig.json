@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "outDir": "./build",
+    "allowJs": true,
+    "target": "es6"
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["**/*spec.js"]
+}

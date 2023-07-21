@@ -1,4 +1,4 @@
-import rollDie from './index';
+import rollDie from './index.ts';
 
 describe('rollDie', () => {
   test('should be a function', () => {

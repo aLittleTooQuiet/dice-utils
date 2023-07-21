@@ -1,4 +1,4 @@
-import isDropLowest from './index';
+import isDropLowest from './index.ts';
 
 describe('isDropLowest', () => {
   test('should be a function', () => {

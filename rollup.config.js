@@ -1,5 +1,7 @@
+import typescript from '@rollup/plugin-typescript';
+
 export default {
-  input: 'src/index.js',
+  input: 'src/index.ts',
   output: [
     {
       file: 'dist/dice-utils.umd.js',
@@ -13,4 +15,5 @@ export default {
       exports: 'named',
     },
   ],
+  plugins: [typescript()],
 };

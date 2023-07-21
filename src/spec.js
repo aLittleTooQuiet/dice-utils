@@ -1,4 +1,4 @@
-import diceUtils, { parseDieNotation, roll, rollDie } from './index';
+import diceUtils, { parseDieNotation, roll, rollDie } from './index.ts';
 
 describe('diceUtils', () => {
   test('should export an object with 3 function properties', () => {

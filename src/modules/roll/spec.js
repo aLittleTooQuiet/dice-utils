@@ -1,4 +1,4 @@
-import roll from './index';
+import roll from './index.ts';
 
 describe('roll', () => {
   test('should be a function', () => {
