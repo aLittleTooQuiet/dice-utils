@@ -3,7 +3,7 @@ import isFudge from '../isFudge/index';
 import isDropLowest from '../isDropLowest/index';
 import isSuccessCount from '../isSuccessCount/index';
 
-interface dieResult {
+interface DieResult {
   count: number,
   sides: number|"F",
   multiply: boolean,
@@ -17,7 +17,7 @@ interface dieResult {
  * @param {string} diceString - A die notation string ie "1d20+5".
  * @return {dieResult} An object containing the parsed components of the die string.
  */
-export default function parseDieNotation(diceString: string): dieResult {
+export default function parseDieNotation(diceString: string): DieResult {
   if (typeof diceString !== 'string') {
     throw new Error('parseDieNotation must be called with a dice notation string');
   }
@@ -31,7 +31,7 @@ export default function parseDieNotation(diceString: string): dieResult {
   const count = parseInt(parts[0], 10) || 1;
   const sides = isFudge(parts[1]) ? 'F' : parseInt(parts[1], 10);
   let mod = 0;
-  const result: dieResult = {
+  const result: DieResult = {
     count,
     sides,
     multiply: false,
