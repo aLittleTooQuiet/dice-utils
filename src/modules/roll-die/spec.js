@@ -1,5 +1,7 @@
 import rollDie from './index.ts';
 
+const MAX = 0.9999;
+
 describe('rollDie', () => {
   test('should be a function', () => {
     const actual = typeof rollDie;
@@ -75,7 +77,7 @@ describe('rollDie', () => {
   });
 
   test('should roll fudge dice', () => {
-    let randFn = jest.fn(() => 1);
+    let randFn = jest.fn(() => MAX);
     let actual = rollDie('F', randFn);
     let expected = 1;
     expect(actual).toBe(expected);

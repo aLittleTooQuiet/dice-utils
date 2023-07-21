@@ -12,8 +12,8 @@ export default function rollDie(sides: number|'F', randFn: () => number = Math.r
   }
 
   if (sides === 'F') {
-    return Math.floor(randFn() * 2.999) - 1;
+    return Math.floor(randFn() * 3) - 1;
   }
 
-  return Math.floor(randFn() * (sides - 0.001)) + 1;
+  return Math.floor(randFn() * sides) + 1;
 }
