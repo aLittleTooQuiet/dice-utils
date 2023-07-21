@@ -1,5 +1,7 @@
 import roll from './index';
 
+const MAX = 0.9999;
+
 describe('roll', () => {
   test('should be a function', () => {
     const actual = typeof roll;
@@ -18,7 +20,7 @@ describe('roll', () => {
   });
 
   test('should return an array of results', () => {
-    const randFn = jest.fn(() => 1);
+    const randFn = jest.fn(() => MAX);
     const actual = roll('3d6', randFn);
     const expected = {
       results: [6, 6, 6],
@@ -28,19 +30,19 @@ describe('roll', () => {
   });
 
   test('should account for capital D', () => {
-    const randFn = jest.fn(() => 1);
+    const randFn = jest.fn(() => MAX);
     const actual = roll('1D6', randFn).total;
     expect(actual).toBe(6);
   });
 
   test('should account for a larger number of sides', () => {
-    const randFn = jest.fn(() => 1);
+    const randFn = jest.fn(() => MAX);
     const actual = roll('1d20', randFn).total;
     expect(actual).toBe(20);
   });
 
   test('should account for positive modifiers', () => {
-    const randFn = jest.fn(() => 1);
+    const randFn = jest.fn(() => MAX);
     let actual = roll('3d6', randFn).total;
     expect(actual).toBe(18);
 
@@ -49,7 +51,7 @@ describe('roll', () => {
   });
 
   test('should account for negative modifiers', () => {
-    const randFn = jest.fn(() => 1);
+    const randFn = jest.fn(() => MAX);
     let actual = roll('3d6', randFn).total;
     expect(actual).toBe(18);
 
@@ -58,7 +60,7 @@ describe('roll', () => {
   });
 
   test('should account for multipliers', () => {
-    const randFn = jest.fn(() => 1);
+    const randFn = jest.fn(() => MAX);
     let actual = roll('3d6', randFn).total;
     expect(actual).toBe(18);
 
@@ -74,7 +76,7 @@ describe('roll', () => {
 
   test('should account for dropping the lowest die', () => {
     let count = -1;
-    const results = [0, 1, 1, 1];
+    const results = [0, MAX, MAX, MAX];
     const randFn = jest.fn(() => {
       count += 1;
       return results[count];
@@ -89,7 +91,7 @@ describe('roll', () => {
 
   test('should account for successes > X', () => {
     let count = -1;
-    const results = [0, 1, 0.7, 0.6];
+    const results = [0, MAX, 0.7, 0.6];
     const randFn = jest.fn(() => {
       count += 1;
       return results[count];
@@ -104,7 +106,7 @@ describe('roll', () => {
 
   test('should account for successes < X', () => {
     let count = -1;
-    const results = [0, 1, 0.7, 0.6];
+    const results = [0, MAX, 0.7, 0.6];
     const randFn = jest.fn(() => {
       count += 1;
       return results[count];
