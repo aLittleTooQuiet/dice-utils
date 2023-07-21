@@ -6,7 +6,7 @@ If you're unfamilar with dice notation, you can [learn more about it here](https
 
 ## API
 
-`dice-utils` exports an object with three functions:
+`dice-utils` exports the following named functions:
 
 * [`roll`](#roll), to get results from a dice notation string (ie "2d6")
 * [`parseDieNotation`](#parseDieNotation), to parse dice notiation string
