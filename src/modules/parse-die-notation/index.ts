@@ -1,16 +1,16 @@
-import isMultiplier from '../isMultiplier/index';
-import isFudge from '../isFudge/index';
-import isDropLowest from '../isDropLowest/index';
-import isSuccessCount from '../isSuccessCount/index';
+import isMultiplier from '../isMultiplier/index.ts';
+import isFudge from '../isFudge/index.ts';
+import isDropLowest from '../isDropLowest/index.ts';
+import isSuccessCount from '../isSuccessCount/index.ts';
 
 interface DieResult {
   count: number,
-  sides: number|"F",
+  sides: number|'F',
   multiply: boolean,
   dropLow: boolean,
   success: number,
   mod: number,
-};
+}
 
 /**
  * Parse a die notation string.
@@ -25,7 +25,7 @@ export default function parseDieNotation(diceString: string): DieResult {
   const parts = diceString.toLowerCase().split('d');
 
   if (parts.length < 2 || parts[1].length === 0) {
-    throw new Error('Cannot parse dice notation string')
+    throw new Error('Cannot parse dice notation string');
   }
 
   const count = parseInt(parts[0], 10) || 1;
@@ -63,4 +63,4 @@ export default function parseDieNotation(diceString: string): DieResult {
   result.mod = mod;
 
   return result;
-};
+}

@@ -1,4 +1,4 @@
-import isMultiplier from './index';
+import isMultiplier from './index.ts';
 
 describe('isMultiplier', () => {
   test('should be a function', () => {

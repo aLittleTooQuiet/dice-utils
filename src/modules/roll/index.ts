@@ -1,17 +1,17 @@
-import parseDieNotation from '../parse-die-notation/index';
-import rollDie from '../roll-die/index';
+import parseDieNotation from '../parse-die-notation/index.ts';
+import rollDie from '../roll-die/index.ts';
 
 interface DiceOptions {
   mod: number,
   multiply: boolean,
   dropLow: boolean,
   success: number,
-};
+}
 
 interface RollResult {
   results: number[],
   total: number,
-};
+}
 
 const getTotal = (results: number[], options: DiceOptions): number => {
   const {
@@ -53,7 +53,7 @@ const getTotal = (results: number[], options: DiceOptions): number => {
  * @return {object} An object containing the results of the invididual die rolls and the
  * total of the modified sum.
  */
-export default function Roll(diceString: string, randFn: Function = Math.random): RollResult {
+export default function Roll(diceString: string, randFn: () => number = Math.random): RollResult {
   const {
     count, sides, mod, multiply, dropLow, success,
   } = parseDieNotation(diceString);
@@ -70,4 +70,4 @@ export default function Roll(diceString: string, randFn: Function = Math.random)
       mod, multiply, dropLow, success,
     }),
   };
-};
+}

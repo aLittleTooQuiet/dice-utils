@@ -1,4 +1,4 @@
-import parseDieNotation from './index';
+import parseDieNotation from './index.ts';
 
 describe('parseDieNotation', () => {
   test('should be a function', () => {
