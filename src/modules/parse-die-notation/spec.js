@@ -18,6 +18,13 @@ describe('parseDieNotation', () => {
     });
   });
 
+  test('should throw if called with a string that cannot be parsed as dice notation', () => {
+    const args = ['', '115', 'aerarera', 'd'];
+    args.forEach((arg) => {
+      expect(() => { parseDieNotation(arg); }).toThrowError('Cannot parse dice notation string');
+    });
+  });
+
   test('should return an object with die count and sides', () => {
     const data = '12d6';
     const actual = parseDieNotation(data);
@@ -25,6 +32,9 @@ describe('parseDieNotation', () => {
       count: 12,
       sides: 6,
       mod: 0,
+      multiply: false,
+      dropLow: false,
+      success: null,
     };
     expect(actual).toEqual(expected);
   });
@@ -36,6 +46,9 @@ describe('parseDieNotation', () => {
       count: 1,
       sides: 6,
       mod: 0,
+      multiply: false,
+      dropLow: false,
+      success: null,
     };
     expect(actual).toEqual(expected);
   });
@@ -48,6 +61,9 @@ describe('parseDieNotation', () => {
         count: 12,
         sides: 6,
         mod: 0,
+        multiply: false,
+        dropLow: false,
+        success: null,
       };
       expect(actual).toEqual(expected);
     });
@@ -60,6 +76,9 @@ describe('parseDieNotation', () => {
       count: 12,
       sides: 6,
       mod: 5,
+      multiply: false,
+      dropLow: false,
+      success: null,
     };
     expect(actual).toEqual(expected);
   });
@@ -71,6 +90,9 @@ describe('parseDieNotation', () => {
       count: 12,
       sides: 20,
       mod: 5,
+      multiply: false,
+      dropLow: false,
+      success: null,
     };
     expect(actual).toEqual(expected);
   });
@@ -82,6 +104,9 @@ describe('parseDieNotation', () => {
       count: 12,
       sides: 6,
       mod: 125,
+      multiply: false,
+      dropLow: false,
+      success: null,
     };
     expect(actual).toEqual(expected);
   });
@@ -93,6 +118,9 @@ describe('parseDieNotation', () => {
       count: 12,
       sides: 6,
       mod: -5,
+      multiply: false,
+      dropLow: false,
+      success: null,
     };
     expect(actual).toEqual(expected);
   });
@@ -104,6 +132,9 @@ describe('parseDieNotation', () => {
       count: 12,
       sides: 20,
       mod: -5,
+      multiply: false,
+      dropLow: false,
+      success: null,
     };
     expect(actual).toEqual(expected);
   });
@@ -116,6 +147,8 @@ describe('parseDieNotation', () => {
       sides: 6,
       mod: 10,
       multiply: true,
+      dropLow: false,
+      success: null,
     };
     expect(actual).toEqual(expected);
   });
@@ -128,6 +161,8 @@ describe('parseDieNotation', () => {
       sides: 6,
       mod: 10,
       multiply: true,
+      dropLow: false,
+      success: null,
     };
     expect(actual).toEqual(expected);
   });
@@ -140,6 +175,8 @@ describe('parseDieNotation', () => {
       sides: 6,
       mod: 100,
       multiply: true,
+      dropLow: false,
+      success: null,
     };
     expect(actual).toEqual(expected);
   });
@@ -151,6 +188,9 @@ describe('parseDieNotation', () => {
       count: 4,
       sides: 'F',
       mod: 0,
+      dropLow: false,
+      multiply: false,
+      success: null,
     };
     expect(actual).toEqual(expected);
   });
@@ -163,6 +203,8 @@ describe('parseDieNotation', () => {
       sides: 6,
       mod: 0,
       dropLow: true,
+      multiply: false,
+      success: null,
     };
     expect(actual).toEqual(expected);
   });
@@ -174,7 +216,9 @@ describe('parseDieNotation', () => {
       count: 2,
       sides: 20,
       mod: 0,
+      success: null,
       dropLow: true,
+      multiply: false,
     };
     expect(actual).toEqual(expected);
   });
@@ -187,6 +231,8 @@ describe('parseDieNotation', () => {
       sides: 6,
       mod: 5,
       success: 1,
+      dropLow: false,
+      multiply: false,
     };
     expect(actual).toEqual(expected);
   });
@@ -199,6 +245,8 @@ describe('parseDieNotation', () => {
       sides: 6,
       mod: 3,
       success: -1,
+      dropLow: false,
+      multiply: false,
     };
     expect(actual).toEqual(expected);
   });

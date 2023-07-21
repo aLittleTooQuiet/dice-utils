@@ -3,23 +3,41 @@ import isFudge from '../isFudge/index';
 import isDropLowest from '../isDropLowest/index';
 import isSuccessCount from '../isSuccessCount/index';
 
+interface dieResult {
+  count: number,
+  sides: number|"F",
+  multiply: boolean,
+  dropLow: boolean,
+  success: number,
+  mod: number,
+};
+
 /**
  * Parse a die notation string.
- * @param {int} diceString - A die notation string ie "1d20+5".
- * @return {object} An object containing the parsed components of the die string.
+ * @param {string} diceString - A die notation string ie "1d20+5".
+ * @return {dieResult} An object containing the parsed components of the die string.
  */
-export default (diceString) => {
+export default (diceString: string): dieResult => {
   if (typeof diceString !== 'string') {
     throw new Error('parseDieNotation must be called with a dice notation string');
   }
 
   const parts = diceString.toLowerCase().split('d');
+
+  if (parts.length < 2 || parts[1].length === 0) {
+    throw new Error('Cannot parse dice notation string')
+  }
+
   const count = parseInt(parts[0], 10) || 1;
   const sides = isFudge(parts[1]) ? 'F' : parseInt(parts[1], 10);
   let mod = 0;
-  const result = {
+  const result: dieResult = {
     count,
     sides,
+    multiply: false,
+    dropLow: false,
+    success: null,
+    mod: 0,
   };
 
   if (Number.isNaN(Number(parts[1]))) {
