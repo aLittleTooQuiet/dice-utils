@@ -12,6 +12,8 @@ If you're unfamilar with dice notation, you can [learn more about it here](https
 * [`parseDieNotation`](#parseDieNotation), to parse dice notiation string
 * [`rollDie`](#rollDie), to roll an individual die
 
+The default export is an object that wraps the three functions.
+
 ### `roll`
 
 Requires a dice notation string as a parameter, and returns an object with `results` and `total` properties.
