@@ -17,7 +17,7 @@ interface dieResult {
  * @param {string} diceString - A die notation string ie "1d20+5".
  * @return {dieResult} An object containing the parsed components of the die string.
  */
-export default (diceString: string): dieResult => {
+export default function parseDieNotation(diceString: string): dieResult {
   if (typeof diceString !== 'string') {
     throw new Error('parseDieNotation must be called with a dice notation string');
   }

@@ -53,7 +53,7 @@ const getTotal = (results: number[], options: DiceOptions): number => {
  * @return {object} An object containing the results of the invididual die rolls and the
  * total of the modified sum.
  */
-export default (diceString: string, randFn: Function = Math.random): RollResult => {
+export default function Roll(diceString: string, randFn: Function = Math.random): RollResult {
   const {
     count, sides, mod, multiply, dropLow, success,
   } = parseDieNotation(diceString);
